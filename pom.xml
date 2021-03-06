@@ -7,10 +7,18 @@
     <groupId>com.walrusone</groupId>
     <artifactId>SkyWarsReloaded</artifactId>
     <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>${revision}</version>
+
+    <properties>
+        <revision>5.4.3_SNAPSHOT-7</revision>
+        <bukkit.version>1.12.2</bukkit.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
     <modules>
-        <module>Skywars</module>
+        <module>SkyWarsReloadedCore</module>
         <module>v1_8_R1</module>
         <module>v1_8_R2</module>
         <module>v1_8_R3</module>
@@ -25,11 +33,35 @@
         <module>v1_16_R1</module>
         <module>v1_16_R2</module>
         <module>v1_16_R3</module>
+        <module>SW-Packager</module>
     </modules>
-
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>flatten-maven-plugin</artifactId>
+                <version>1.0.0</version>
+                <configuration>
+                    <updatePomFile>true</updatePomFile>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>flatten</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>flatten</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>flatten.clean</id>
+                        <phase>clean</phase>
+                        <goals>
+                            <goal>clean</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -39,6 +71,9 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
+        </plugins>
+    </build>
+    <!--
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
@@ -63,21 +98,6 @@
                     <outputDirectory>${dirs.output}</outputDirectory>
                 </configuration>
             </plugin>
-        </plugins>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
-    </build>
-
-    <properties>
-        <bukkit.version>1.12.2</bukkit.version>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <dirs.output>./target/</dirs.output>
-    </properties>
+        </plugins> -->
 
 </project>
