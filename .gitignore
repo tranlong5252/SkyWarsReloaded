@@ -1,0 +1,6 @@
+.idea/
+SWR.iml
+*.iml
+/out/
+/target/
+/*/target/
