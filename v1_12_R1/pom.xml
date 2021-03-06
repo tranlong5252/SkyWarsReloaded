@@ -20,14 +20,14 @@
     <repositories>
         <repository>
             <id>bukkitmc</id>
-            <url>http://nexus.gaagjescraftnet/repository/bukkit/</url>
+            <url>http://nexus.gaagjescraft.net/repository/bukkit/</url>
         </repository>
     </repositories>
 
     <dependencies>
         <dependency>
             <groupId>org.bukkit</groupId>
-<artifactId>bukkit</artifactId>
+            <artifactId>bukkit</artifactId>
             <version>1.12.2</version>
             <scope>provided</scope>
         </dependency>
