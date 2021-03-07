@@ -170,8 +170,6 @@ public class Util {
         Player player = SkyWarsReloaded.get().getServer().getPlayer(uuid);
 
         if (player == null) return true;
-
-
         if (player.isDead()) return true;
 
         if (MatchManager.get().isSpectating(player)) return true;
@@ -279,9 +277,14 @@ public class Util {
 
     public String getDeathMessage(@Nullable DamageCause dCause, boolean withHelp, Player target, @Nullable Player killer) {
         String first;
-        String second = new Messaging.MessageFormatter()
-                .setVariable("killer", killer.getName())
-                .format("game.death.killer-section");
+        String second = null;
+        if (withHelp) {
+            second = new Messaging.MessageFormatter()
+                    .setVariable("killer", killer.getName())
+                    .format("game.death.killer-section");
+        }
+
+        if (dCause == null) dCause = DamageCause.CUSTOM;
 
         if (dCause.equals(DamageCause.BLOCK_EXPLOSION) || dCause.equals(DamageCause.ENTITY_EXPLOSION)) {
             first = new Messaging.MessageFormatter()
