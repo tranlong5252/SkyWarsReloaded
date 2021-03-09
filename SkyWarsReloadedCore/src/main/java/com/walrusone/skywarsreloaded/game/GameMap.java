@@ -30,7 +30,6 @@ import org.bukkit.block.*;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
-import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.event.player.PlayerTeleportEvent.TeleportCause;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
@@ -1145,13 +1144,12 @@ public class GameMap {
 
     public void unregister(boolean save) {
         if (getJoinQueue() != null) getJoinQueue().kill();
+        // Unregister and stop
+        this.registered = false;
+        stopGameInProgress();
+        // If save -> save all arena data
         if (save) {
-            this.registered = false;
-            stopGameInProgress();
             saveArenaData();
-        } else {
-            this.registered = false;
-            stopGameInProgress();
         }
     }
 
