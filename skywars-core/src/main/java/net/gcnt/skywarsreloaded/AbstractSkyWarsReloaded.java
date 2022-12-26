@@ -25,6 +25,7 @@ import net.gcnt.skywarsreloaded.manager.gameinstance.LocalGameInstanceManager;
 import net.gcnt.skywarsreloaded.utils.PlatformUtils;
 import net.gcnt.skywarsreloaded.utils.SWLogger;
 import net.gcnt.skywarsreloaded.utils.properties.ConfigProperties;
+import net.gcnt.skywarsreloaded.wrapper.event.CoreSWGameStateEvent;
 import net.gcnt.skywarsreloaded.wrapper.scheduler.SWScheduler;
 import net.gcnt.skywarsreloaded.wrapper.sender.SWCommandSender;
 import net.gcnt.skywarsreloaded.wrapper.server.SWServer;
@@ -687,6 +688,7 @@ public abstract class AbstractSkyWarsReloaded implements SkyWarsReloaded {
         new CoreSWPreLoginListener(this);
         new CoreSWQuitListener(this);
         new CoreSWWorldInitListener(this);
+        new CoreSWGameStateListener(this);
 
         new CoreSWMessageReceivedListener(this);
     }
