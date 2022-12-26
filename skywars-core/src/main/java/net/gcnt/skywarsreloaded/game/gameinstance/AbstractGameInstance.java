@@ -4,6 +4,7 @@ import com.google.gson.JsonObject;
 import net.gcnt.skywarsreloaded.SkyWarsReloaded;
 import net.gcnt.skywarsreloaded.game.GameTemplate;
 import net.gcnt.skywarsreloaded.game.types.GameState;
+import net.gcnt.skywarsreloaded.wrapper.event.CoreSWGameStateEvent;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.UUID;
@@ -56,6 +57,7 @@ public abstract class AbstractGameInstance implements GameInstance {
     @Override
     public void setState(GameState state) {
         this.state = state;
+        plugin.getEventManager().callEvent(new CoreSWGameStateEvent(this, state));
     }
 
     @Override
