@@ -31,7 +31,7 @@ public class BukkitSWPlayer extends AbstractSWPlayer {
         this.inventory = new BukkitSWInventory(plugin, player.getInventory(), "Inventory");
     }
 
-    @Nullable
+    @Override @Nullable
     public Player getPlayer() {
         return this.player;
     }

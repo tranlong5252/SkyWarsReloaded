@@ -8,12 +8,15 @@ import net.gcnt.skywarsreloaded.utils.Item;
 import net.gcnt.skywarsreloaded.utils.SWCoord;
 import net.gcnt.skywarsreloaded.wrapper.sender.SWCommandSender;
 import net.gcnt.skywarsreloaded.wrapper.server.SWInventory;
+import org.bukkit.entity.Player;
 import org.jetbrains.annotations.Nullable;
 
 /**
  * General data about a player that is independent of any running state of games or teams
  */
 public interface SWPlayer extends SWCommandSender, SWOfflinePlayer, SWEntity {
+
+    Player getPlayer();
 
     SWPlayerData getPlayerData();
 
